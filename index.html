@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Ukiyo Portfolio</title>
+    <meta
+      name="description"
+      content="Personal portfolio with Digital Ukiyo theme - fusion of retro Japanese aesthetics and modern minimal interaction"
+    />
+    <style>
+      /* Digital Ukiyo - Retro Japanese Zen Theme
+   A fusion of retro Japanese aesthetics with modern minimalist approach
+   Colors: Crimson Red (#C24646), Sakura Pink (#F9C5D1), Burnt Orange (#F19A3E), 
+   Warm Yellow (#F7D65A), Deep Indigo (#3C3A73) */
+
+      /* Import Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Sawarabi+Mincho&display=swap");
+
+      /* CSS Reset & Global Styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Noto Sans", sans-serif;
+        color: #fff;
+        background-color: #3c3a73;
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Subtle background texture */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+        opacity: 0.1;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Sawarabi Mincho", serif;
+        color: #c24646;
+        letter-spacing: 0.05em;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease-in-out;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-family: inherit;
+      }
+
+      /* Hero Section */
+      .hero-container {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #3c3a73 0%,
+          #c24646 50%,
+          #f19a3e 100%
+        );
+        overflow: hidden;
+      }
+
+      /* Hero content styling */
+      .hero-content {
+        text-align: center;
+        z-index: 2;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        backdrop-filter: blur(5px);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hero-content:hover {
+        transform: translateY(-10px);
+      }
+
+      .main-heading {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+        color: #c24646;
+        text-shadow: 0 0 15px rgba(194, 70, 70, 0.5);
+        transition: text-shadow 0.3s ease;
+      }
+
+      .main-heading:hover {
+        text-shadow: 0 0 25px rgba(194, 70, 70, 0.8);
+      }
+
+      .sub-heading {
+        font-size: 1.8rem;
+        color: #f19a3e;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards 0.5s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Bubble Container */
+      .bubble-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* Music Toggle Button */
+      .music-button {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #f9c5d1;
+        color: #3c3a73;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 15px rgba(249, 197, 209, 0.7);
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      .music-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(249, 197, 209, 0.9);
+      }
+
+      .music-icon {
+        animation: pulse 2s infinite alternate;
+      }
+
+      @keyframes pulse {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.2);
+        }
+      }
+
+      /* Navigation Bar */
+      .navigation {
+        position: fixed;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        width: 80%;
+        max-width: 800px;
+      }
+
+      .nav-list {
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        gap: 15px;
+      }
+
+      .nav-list li {
+        flex: 1;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 12px 25px;
+        text-align: center;
+        background: #f9c5d1;
+        color: #3c3a73;
+        border-radius: 30px;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        text-decoration: underline;
+      }
+
+      .nav-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+      }
+
+      .nav-link:hover::before {
+        transform: translateX(100%);
+      }
+
+      .nav-link.active {
+        background: #f19a3e;
+        color: white;
+        box-shadow: 0 0 20px rgba(241, 154, 62, 0.6);
+      }
+
+      /* Main Content Area */
+      .main-content {
+        min-height: 100vh;
+        padding: 120px 5% 80px;
+        background: linear-gradient(180deg, #3c3a73 0%, #2a294f 100%);
+      }
+
+      /* Toggle Buttons */
+      .toggle-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .large-toggle-btn {
+        padding: 18px 40px;
+        font-size: 1.5rem;
+        background: #c24646;
+        color: white;
+        border-radius: 15px;
+        font-family: "Sawarabi Mincho", serif;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+        transition: all 0.15s ease;
+        position: relative;
+        top: 0;
+      }
+
+      .large-toggle-btn:nth-child(2) {
+        background: #f19a3e;
+      }
+
+      .large-toggle-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 11px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .large-toggle-btn:active {
+        top: 8px;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+        transform: translateY(0);
+      }
+
+      /* Content Sections */
+      .content-section {
+        display: none;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        margin-bottom: 50px;
+        animation: slideIn 0.5s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      .content-section.active {
+        display: block;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .content-section h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #f7d65a;
+        font-size: 2.5rem;
+        position: relative;
+      }
+
+      .content-section h2::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: #f19a3e;
+        margin: 15px auto;
+        border-radius: 3px;
+      }
+
+      /* Easter Egg Hidden Content */
+      .hidden-content {
+        display: none;
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 200px;
+        background: rgba(60, 58, 115, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(194, 70, 70, 0.5);
+        z-index: 90;
+        transform: translateX(300px);
+        transition: transform 0.5s ease-out;
+      }
+
+      .hidden-content.show {
+        display: block;
+        transform: translateX(0);
+      }
+
+      /* Easter egg trigger - you'll need JS to implement the actual function */
+      .easter-egg-trigger {
+        position: fixed;
+        bottom: 30px;
+        right: 100px;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 80;
+        transition: all 0.3s ease;
+      }
+
+      .easter-egg-trigger:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      /* Footer Section */
+      .footer {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 30px 0;
+        text-align: center;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .credits p {
+        margin: 5px 0;
+      }
+
+      .font-info,
+      .color-info {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      /* Cursor Effect (basic styling - will need JS to fully implement) */
+      .cursor-bubble {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(249, 197, 209, 0.6);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        mix-blend-mode: screen;
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 1024px) {
+        .main-heading {
+          font-size: 4rem;
+        }
+
+        .sub-heading {
+          font-size: 1.5rem;
+        }
+
+        .toggle-container {
+          flex-direction: row;
+          gap: 15px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .navigation {
+          width: 90%;
+        }
+
+        .nav-list {
+          flex-wrap: wrap;
+        }
+
+        .nav-link {
+          padding: 10px 15px;
+          font-size: 0.9rem;
+        }
+
+        .main-heading {
+          font-size: 3rem;
+        }
+
+        .sub-heading {
+          font-size: 1.2rem;
+        }
+
+        .large-toggle-btn {
+          padding: 15px 30px;
+          font-size: 1.2rem;
+        }
+
+        .music-button {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .hero-content {
+          padding: 1rem;
+        }
+
+        .main-heading {
+          font-size: 2.5rem;
+        }
+
+        .sub-heading {
+          font-size: 1rem;
+        }
+
+        .nav-list {
+          gap: 10px;
+        }
+
+        .nav-list li {
+          width: calc(50% - 5px);
+          flex: none;
+        }
+
+        .nav-link {
+          padding: 8px 10px;
+          font-size: 0.8rem;
+        }
+
+        .toggle-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .large-toggle-btn {
+          width: 80%;
+          margin-bottom: 15px;
+        }
+      }
+
+      /* Animation Keyframes */
+      @keyframes flicker {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      /* Helper Classes */
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .flicker {
+        animation: flicker 2s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <header id="hero" class="hero-container">
+      <div class="hero-content">
+        <h1 id="user-name" class="main-heading">Your Name</h1>
+        <h2 id="tagline" class="sub-heading">
+          Creative Developer & Digital Artist
+        </h2>
+      </div>
+
+      <!-- Container for floating bubble effect (to be animated via JS) -->
+      <div id="bubble-canvas" class="bubble-container"></div>
+
+      <!-- Music Toggle Button Placeholder -->
+      <button
+        id="music-toggle"
+        class="music-button"
+        aria-label="Toggle background music"
+      >
+        <span class="music-icon">♪</span>
+      </button>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav id="main-nav" class="navigation">
+      <ul class="nav-list">
+        <li><a href="#about" class="nav-link">About Me</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#blog" class="nav-link">Blog</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="content" class="main-content">
+      <!-- Large Toggle Buttons -->
+      <div class="toggle-container">
+        <button id="about-toggle" class="large-toggle-btn">About Me</button>
+        <button id="projects-toggle" class="large-toggle-btn">Projects</button>
+      </div>
+
+      <!-- About Me Section (will be toggled) -->
+      <section id="about" class="content-section">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <!-- Content will be added here -->
+        </div>
+      </section>
+
+      <!-- Projects Section (will be toggled) -->
+      <section id="projects" class="content-section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <!-- Project items will be added here -->
+        </div>
+      </section>
+
+      <!-- Blog Section -->
+      <section id="blog" class="content-section">
+        <h2>Blog</h2>
+        <div class="blog-entries">
+          <!-- Blog entries will be added here -->
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="content-section">
+        <h2>Contact</h2>
+        <div class="contact-content">
+          <!-- Contact form or info will be added here -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Hidden Easter Egg Section -->
+    <div id="easter-egg" class="hidden-content">
+      <!-- Secret content will be revealed through interaction -->
+      <div class="easter-egg-content">
+        <!-- Easter egg content will be added here -->
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer id="site-footer" class="footer">
+      <div class="credits">
+        <p>
+          Theme: Digital Ukiyo - Retro Japanese Zen with Bubble Interactions
+        </p>
+        <p class="font-info">Fonts: [Font Names Will Go Here]</p>
+        <p class="color-info">Colors: [Color Palette Will Go Here]</p>
+      </div>
+    </footer>
+
+    <!-- External JavaScript will be linked here -->
+    <script>
+      /**
+       * Digital Ukiyo - Portfolio JavaScript
+       * Adds interactivity, animations, and smooth transitions to the "Digital Ukiyo" portfolio
+       * with retro Japanese theme, bubble effects, and easter eggs
+       */
+
+      // Wait for the DOM to be fully loaded before executing scripts
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize all interactive elements
+        initCursorBubbles();
+        initSmoothScroll();
+        initToggleSections();
+        initEasterEgg();
+        initSectionVisibility();
+        initFallingCherryBlossoms();
+        initMusicToggle();
+        initHeroAnimation();
+      });
+
+      /**
+       * 1. Cursor Bubble Animation
+       * Creates interactive bubbles that follow the cursor and pop when hovered
+       */
+      function initCursorBubbles() {
+        const bubbleContainer = document.getElementById("bubble-canvas");
+        const body = document.body;
+
+        // Colors based on theme
+        const bubbleColors = ["#C24646", "#F9C5D1", "#F19A3E", "#F7D65A"];
+
+        // Track mouse movement
+        body.addEventListener("mousemove", (e) => {
+          if (Math.random() > 0.85) {
+            // Limit bubble creation for performance
+            createBubble(e.clientX, e.clientY, bubbleContainer, bubbleColors);
+          }
+        });
+
+        // Create initial bubbles
+        for (let i = 0; i < 15; i++) {
+          const x = Math.random() * window.innerWidth;
+          const y = Math.random() * window.innerHeight;
+          createBubble(x, y, bubbleContainer, bubbleColors, true);
+        }
+      }
+
+      /**
+       * Creates a single bubble element at specified position
+       */
+      function createBubble(x, y, container, colors, isStatic = false) {
+        const bubble = document.createElement("div");
+        bubble.className = "cursor-bubble";
+
+        // Random properties for each bubble
+        const size = Math.random() * 40 + 10; // Size between 10-50px
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const duration = Math.random() * 2 + 1; // Animation duration 1-3s
+
+        // Set bubble style
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.backgroundColor = color;
+        bubble.style.opacity = isStatic ? "0.3" : "0.6";
+        bubble.style.left = `${x}px`;
+        bubble.style.top = `${y}px`;
+        bubble.style.transition = `all ${duration}s ease-out`;
+
+        // Add to container
+        container.appendChild(bubble);
+
+        // Add hover effect to pop bubble
+        bubble.addEventListener("mouseenter", () => {
+          popBubble(bubble);
+        });
+
+        // Static bubbles float randomly
+        if (isStatic) {
+          animateStaticBubble(bubble);
+        } else {
+          // Auto-remove dynamic bubbles after some time
+          setTimeout(() => {
+            popBubble(bubble);
+          }, duration * 1000 + 1000);
+        }
+      }
+
+      /**
+       * Animates a static bubble with floating movement
+       */
+      function animateStaticBubble(bubble) {
+        const floatX = Math.random() * 100 - 50; // -50 to 50px
+        const floatY = Math.random() * 100 - 50; // -50 to 50px
+        const duration = Math.random() * 10 + 5; // 5-15s
+
+        bubble.style.transition = `transform ${duration}s ease-in-out`;
+        bubble.style.transform = `translate(${floatX}px, ${floatY}px)`;
+
+        // Continuously reposition the bubble
+        setTimeout(() => {
+          if (bubble.parentNode) {
+            animateStaticBubble(bubble);
+          }
+        }, duration * 1000);
+      }
+
+      /**
+       * Creates a popping animation for bubbles
+       */
+      function popBubble(bubble) {
+        bubble.style.transform = "scale(1.5)";
+        bubble.style.opacity = "0";
+
+        // Remove from DOM after animation completes
+        setTimeout(() => {
+          if (bubble.parentNode) {
+            bubble.parentNode.removeChild(bubble);
+          }
+        }, 1000);
+      }
+
+      /**
+       * 2. Smooth Scroll for Navigation
+       * Implements smooth scrolling to sections when navigation links are clicked
+       */
+      function initSmoothScroll() {
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // Get the target section
+            const targetId = link.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            // Highlight the active nav link
+            navLinks.forEach((navLink) => navLink.classList.remove("active"));
+            link.classList.add("active");
+
+            // Scroll to the section
+            targetSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          });
+        });
+      }
+
+      /**
+       * 3. Toggle Sections
+       * Handles showing/hiding content sections when toggle buttons are clicked
+       */
+      function initToggleSections() {
+        const aboutToggle = document.getElementById("about-toggle");
+        const projectsToggle = document.getElementById("projects-toggle");
+        const aboutSection = document.getElementById("about");
+        const projectsSection = document.getElementById("projects");
+
+        // Initially show about section
+        aboutSection.classList.add("active");
+        aboutToggle.classList.add("active");
+
+        // About toggle button
+        aboutToggle.addEventListener("click", () => {
+          // Button animation
+          animateToggleButton(aboutToggle);
+
+          // Update active states
+          aboutToggle.classList.add("active");
+          projectsToggle.classList.remove("active");
+
+          // Fade out projects section if visible
+          if (projectsSection.classList.contains("active")) {
+            fadeOut(projectsSection, () => {
+              // Once faded out, fade in about section
+              fadeIn(aboutSection);
+            });
+          } else {
+            // Directly fade in about section
+            fadeIn(aboutSection);
+          }
+        });
+
+        // Projects toggle button
+        projectsToggle.addEventListener("click", () => {
+          // Button animation
+          animateToggleButton(projectsToggle);
+
+          // Update active states
+          projectsToggle.classList.add("active");
+          aboutToggle.classList.remove("active");
+
+          // Fade out about section if visible
+          if (aboutSection.classList.contains("active")) {
+            fadeOut(aboutSection, () => {
+              // Once faded out, fade in projects section
+              fadeIn(projectsSection);
+            });
+          } else {
+            // Directly fade in projects section
+            fadeIn(projectsSection);
+          }
+        });
+      }
+
+      /**
+       * Animates a toggle button when clicked
+       */
+      function animateToggleButton(button) {
+        button.style.transform = "scale(1.1)";
+
+        setTimeout(() => {
+          button.style.transform = "scale(1)";
+        }, 200);
+      }
+
+      /**
+       * Fades in an element
+       */
+      function fadeIn(element) {
+        // Add active class
+        element.classList.add("active");
+        // Reset opacity to ensure animation works
+        element.style.opacity = "0";
+
+        // Trigger animation
+        setTimeout(() => {
+          element.style.transition = "opacity 0.5s ease";
+          element.style.opacity = "1";
+        }, 10);
+      }
+
+      /**
+       * Fades out an element and runs callback when complete
+       */
+      function fadeOut(element, callback) {
+        element.style.transition = "opacity 0.5s ease";
+        element.style.opacity = "0";
+
+        setTimeout(() => {
+          element.classList.remove("active");
+          if (callback) callback();
+        }, 500);
+      }
+
+      /**
+       * 4. Easter Egg Animation
+       * Adds a hidden interaction that reveals secret content
+       */
+      function initEasterEgg() {
+        // Create a trigger element if it doesn't exist
+        let trigger = document.querySelector(".easter-egg-trigger");
+
+        if (!trigger) {
+          trigger = document.createElement("div");
+          trigger.className = "easter-egg-trigger";
+          trigger.innerHTML = "✿";
+          document.body.appendChild(trigger);
+        }
+
+        const easterEgg = document.getElementById("easter-egg");
+
+        // Add secret quote to easter egg content
+        const easterEggContent = easterEgg.querySelector(".easter-egg-content");
+        easterEggContent.innerHTML = `
+        <h3>Secret Garden</h3>
+        <p>"落花枝頭猶有蕊，青鳥銜來又一春"</p>
+        <p><em>Though flowers fall, buds remain on branches; 
+        the blue bird brings another spring.</em></p>
+    `;
+
+        // Easter egg trigger click
+        trigger.addEventListener("click", () => {
+          easterEgg.classList.toggle("show");
+
+          // Create a burst of cherry blossoms when activated
+          if (easterEgg.classList.contains("show")) {
+            createCherryBlossomBurst(trigger);
+          }
+        });
+      }
+
+      /**
+       * Creates a burst of cherry blossoms from a trigger point
+       */
+      function createCherryBlossomBurst(element) {
+        const rect = element.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Create multiple blossoms in a burst
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => {
+            createCherryBlossom(centerX, centerY);
+          }, i * 50);
+        }
+      }
+
+      /**
+       * 5. Smooth Transitions for Hover Effects
+       * - Most hover effects are handled in CSS
+       * This adds additional dynamic hover effects for specific elements
+       */
+      function initHoverEffects() {
+        // Add pulse effect to main heading
+        const mainHeading = document.getElementById("user-name");
+
+        if (mainHeading) {
+          mainHeading.addEventListener("mouseenter", () => {
+            mainHeading.style.textShadow = "0 0 25px rgba(194, 70, 70, 0.8)";
+          });
+
+          mainHeading.addEventListener("mouseleave", () => {
+            mainHeading.style.textShadow = "0 0 15px rgba(194, 70, 70, 0.5)";
+          });
+        }
+      }
+
+      /**
+       * 6. Animation for Cherry Blossoms
+       * Creates falling cherry blossom petals in the background
+       */
+      function initFallingCherryBlossoms() {
+        // Create container for blossoms if it doesn't exist
+        let blossomContainer = document.querySelector(".blossom-container");
+
+        if (!blossomContainer) {
+          blossomContainer = document.createElement("div");
+          blossomContainer.className = "blossom-container";
+          blossomContainer.style.position = "fixed";
+          blossomContainer.style.top = "0";
+          blossomContainer.style.left = "0";
+          blossomContainer.style.width = "100%";
+          blossomContainer.style.height = "100%";
+          blossomContainer.style.pointerEvents = "none";
+          blossomContainer.style.zIndex = "0";
+          document.body.appendChild(blossomContainer);
+        }
+
+        // Create initial blossoms
+        for (let i = 0; i < 5; i++) {
+          createCherryBlossom();
+        }
+
+        // Continue creating blossoms at intervals
+        setInterval(() => {
+          if (document.visibilityState === "visible" && Math.random() > 0.7) {
+            createCherryBlossom();
+          }
+        }, 1000);
+      }
+
+      /**
+       * Creates a single cherry blossom petal
+       */
+      function createCherryBlossom(startX = null, startY = null) {
+        const blossom = document.createElement("div");
+        const container = document.querySelector(".blossom-container");
+
+        // Random starting position if not specified
+        const x = startX !== null ? startX : Math.random() * window.innerWidth;
+        const y = startY !== null ? startY : -50; // Start above viewport
+
+        // Random properties
+        const size = Math.random() * 15 + 5; // 5-20px
+        const opacity = Math.random() * 0.5 + 0.3; // 0.3-0.8
+        const fallDuration = Math.random() * 10 + 5; // 5-15s
+        const swayAmount = Math.random() * 200 - 100; // -100 to 100px
+        const rotateAmount = Math.random() * 720; // 0-720 degrees
+
+        // Blossom style
+        blossom.style.position = "absolute";
+        blossom.style.width = `${size}px`;
+        blossom.style.height = `${size}px`;
+        blossom.style.borderRadius = "50% 50% 50% 0";
+        blossom.style.backgroundColor = "#F9C5D1";
+        blossom.style.opacity = opacity;
+        blossom.style.left = `${x}px`;
+        blossom.style.top = `${y}px`;
+        blossom.style.transition = `all ${fallDuration}s linear`;
+        blossom.style.transform = "rotate(45deg)";
+        blossom.style.zIndex = "0";
+
+        // Add to container
+        container.appendChild(blossom);
+
+        // Start animation on next frame to ensure transition works
+        requestAnimationFrame(() => {
+          // Animate falling and swaying
+          blossom.style.transform = `translate(${swayAmount}px, ${window.innerHeight}px) rotate(${rotateAmount}deg)`;
+          blossom.style.opacity = "0";
+        });
+
+        // Remove after animation completes
+        setTimeout(() => {
+          if (blossom.parentNode) {
+            blossom.parentNode.removeChild(blossom);
+          }
+        }, fallDuration * 1000);
+      }
+
+      /**
+       * 7. Music Toggle
+       * Handles background music playback
+       */
+      function initMusicToggle() {
+        const musicToggle = document.getElementById("music-toggle");
+        let audio = null;
+        let isPlaying = false;
+
+        // Create audio element if it doesn't exist
+        if (!audio) {
+          audio = document.createElement("audio");
+          audio.loop = true;
+          audio.volume = 0.4; // Start at 40% volume
+          // Replace with actual music URL
+          audio.src = "https://example.com/japanese-lofi.mp3";
+          document.body.appendChild(audio);
+        }
+
+        // Toggle music playback
+        musicToggle.addEventListener("click", () => {
+          if (isPlaying) {
+            // Fade out and pause
+            fadeOutAudio(audio, () => {
+              audio.pause();
+            });
+            musicToggle.classList.remove("active");
+            musicToggle.innerHTML = '<span class="music-icon">♪</span>';
+          } else {
+            // Play and fade in
+            audio
+              .play()
+              .then(() => {
+                fadeInAudio(audio);
+                musicToggle.classList.add("active");
+                musicToggle.innerHTML = '<span class="music-icon">♫</span>';
+              })
+              .catch((error) => {
+                // Handle autoplay restrictions
+                console.log("Audio playback prevented by browser: ", error);
+                alert("Please click again to enable music playback");
+              });
+          }
+
+          isPlaying = !isPlaying;
+        });
+      }
+
+      /**
+       * Fades in audio volume
+       */
+      function fadeInAudio(audioElement, duration = 1000) {
+        audioElement.volume = 0;
+
+        const interval = 50;
+        const steps = duration / interval;
+        const targetVolume = 0.4;
+        const increment = targetVolume / steps;
+
+        const fadeInterval = setInterval(() => {
+          if (audioElement.volume < targetVolume) {
+            audioElement.volume = Math.min(
+              targetVolume,
+              audioElement.volume + increment
+            );
+          } else {
+            clearInterval(fadeInterval);
+          }
+        }, interval);
+      }
+
+      /**
+       * Fades out audio volume and executes callback when complete
+       */
+      function fadeOutAudio(audioElement, callback, duration = 1000) {
+        const interval = 50;
+        const steps = duration / interval;
+        const decrement = audioElement.volume / steps;
+
+        const fadeInterval = setInterval(() => {
+          if (audioElement.volume > 0.01) {
+            audioElement.volume = Math.max(0, audioElement.volume - decrement);
+          } else {
+            audioElement.volume = 0;
+            clearInterval(fadeInterval);
+            if (callback) callback();
+          }
+        }, interval);
+      }
+
+      /**
+       * 8. Scroll Animations for Hero Section
+       * Animates elements when the hero section enters the viewport
+       */
+      function initHeroAnimation() {
+        const hero = document.getElementById("hero");
+        const name = document.getElementById("user-name");
+        const tagline = document.getElementById("tagline");
+
+        // Animate hero elements on load
+        setTimeout(() => {
+          if (name) {
+            name.style.opacity = "0";
+            name.style.transform = "translateY(20px)";
+
+            setTimeout(() => {
+              name.style.transition = "opacity 1s ease, transform 1s ease";
+              name.style.opacity = "1";
+              name.style.transform = "translateY(0)";
+            }, 500);
+          }
+
+          if (tagline) {
+            tagline.style.opacity = "0";
+            tagline.style.transform = "translateY(20px)";
+
+            setTimeout(() => {
+              tagline.style.transition = "opacity 1s ease, transform 1s ease";
+              tagline.style.opacity = "1";
+              tagline.style.transform = "translateY(0)";
+            }, 1000);
+          }
+        }, 300);
+
+        // Set up IntersectionObserver for scroll effects if supported
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in-view");
+                  // Stop observing once animation is triggered
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.3 }
+          );
+
+          // Observe hero section
+          observer.observe(hero);
+        }
+      }
+
+      /**
+       * 9. General Section Visibility on Scroll
+       * Handles animations for sections as they enter the viewport
+       */
+      function initSectionVisibility() {
+        const sections = document.querySelectorAll(".content-section");
+
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in-view");
+                  // Optional: Stop observing after animation
+                  // observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.2 }
+          );
+
+          // Observe all sections
+          sections.forEach((section) => {
+            observer.observe(section);
+          });
+        }
+      }
+
+      /**
+       * Helper function to check if an element is in viewport
+       */
+      function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <=
+            (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+
+      /**
+       * Window resize event handler to update layout
+       */
+      window.addEventListener("resize", () => {
+        // Handle any resize-specific updates
+      });
+
+      /**
+       * Document visibility change handler to manage animations when tab is inactive
+       */
+      document.addEventListener("visibilitychange", () => {
+        // Pause intensive animations when tab is not visible
+        const isVisible = document.visibilityState === "visible";
+        // Handle visibility changes
+      });
+    </script>
+  </body>
+</html>
